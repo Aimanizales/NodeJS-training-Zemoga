@@ -4,16 +4,21 @@
   "description": "Training based on gmoralesc github course",
   "main": "app.js",
   "dependencies": {
+    "colors": "^1.1.2",
     "moment": "^2.17.1"
   },
-  "devDependencies": {},
-  "scripts": {
-    "test": "test"
+  "devDependencies": {
+    "jshint": "^2.9.4"
   },
-  "author": "Aiman Abdel Samad",
+  "scripts": {
+    "start": "node app.js",
+    "lint": "jshint **.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Aiman Abdel-Samad",
   "license": "ISC",
-  "repository":{ 
-    "type" : "git",
-    "url" : "https://github.com/Aimanizales/nodejs-z-training.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Aimanizales/nodejs-z-training.git"
   }
 }
