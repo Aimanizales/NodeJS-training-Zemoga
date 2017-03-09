@@ -7,23 +7,31 @@
 - Incluye varias librerías Core (V8 y libuv entre las más importantes).
 - Soporta librerías escritas en C++ y su incorporación se hace mediante 'bindings'.
 
-## Librerías Core (V8 y libuv)
-### V8
-- [Github V8](https://github.com/v8/v8)
-- Librería encargada de convertir JS a código de máquina (?).
+## Conceptos base
+
+### Librerías Core (V8 y libuv)
+- [Github V8](https://github.com/v8/v8) | [docs.libuv.org](http://docs.libuv.org/en/v1.x/) | [Github Libuv](https://github.com/libuv/libuv) 
+- Librerías encargadas de convertir JS a código de máquina (?).
 - Usada también por Chrome (también desarrollado en C++) como librería 'engine' de JS.
+
+### Investigar:
 - 'Single thread': (se ejecuta línea por línea)
 - 'Event loop': (la solución al single thread)
 
-### Libuv 
-- [docs.libuv.org](http://docs.libuv.org/en/v1.x/) | [Github Libuv](https://github.com/libuv/libuv) 
-- Otra librería similar a V8 
-
-
-
-## Objeto Process
-- Es un objeto global (se puede utilizar en cualquier parte del programa, pues no depende de ningún contexto).
-
+### Objeto `process`:
+- [NodeJS process ref.](https://nodejs.org/api/process.html#process_process)
+- Es un objeto global.
+- Se puede utilizar en cualquier parte del programa (no depende de ningún contexto).
+- provee información acerca del proceso actual y algunas características del sistema donde se está ejecutando.
+- `node -p process` muestra todo el objeto process
+- `node -p process.env` muestra información del entorno donde se está ejecutando el proceso actual de node
+- También se puede almacenar información.
+- Esas variables se pueden establecer en el sistema y no en el código fuente de la app. Ej:
+```
+node
+var port = process.env.PORT || 3000;
+console.log(port);
+```
 
 
 ## REPL
