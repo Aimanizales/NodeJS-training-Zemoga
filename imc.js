@@ -1,11 +1,10 @@
 #!/usr/bin/env node
-
 var chalk = require('chalk'),
     moment = require('moment');
 
 var height = process.argv[2],
     weight = process.argv[3],
-    imc = calculateIMC(),
+    imc = weight / Math.pow(height, 2),
     imcRanges = [{
       min: 0,
       max: 16,
@@ -55,31 +54,38 @@ var height = process.argv[2],
       color: 'bgRed'
     }];
 
-function calculateIMC(){
-  return weight / Math.pow(height, 2);
-}
-
 function getIMCMessage(){
-  let message = '';
-  imcRanges.forEach(function(item, index){
+  let message = chalk.red('IMC fuera del rango');
+  const range = imcRanges.find(element => imc >= element.min && imc <= element.max);
+
+  if (range) {
+    message = chalk.bold[range.color](range.message);
+  }
+  /*imcRanges.forEach((item, index) => {
     if(imc >= item.min && imc <= item.max){
       message = chalk.bold[item.color](item.message);
       return;
     }else if(imc < 0 || imc > 100) {
       message = chalk.red('IMC fuera del rango');
     }
-  });
+  });*/
   return message;
 }
 
-(function(){
-  if(height && !isNaN(height) && weight && !isNaN(weight)){
-    console.log(chalk.grey(moment()), '\n',
-      'Username: ', process.env.USER, '\n',
-      'Height:', height + 'm  / Weight:', weight + 'kg\n',
-      'IMC:', calculateIMC(), '\n', 
-      getIMCMessage());
-  }else{
-    console.log('Revisa los datos');
+function init(){
+  let message = 'Revisa los datos';
+
+  if(!isNaN(height) && !isNaN(weight)){
+    message = `
+      Date: ${chalk.grey(moment())}
+      Username: ${chalk.grey(process.env.USER)}
+      Height: ${chalk.grey(height + 'm')}
+      Weight:${chalk.grey(weight + 'Kg')}
+      IMC:${chalk.grey.bold(imc)}
+      ${getIMCMessage()}
+    `;
   }
-})();
+  console.log(message);
+}
+
+init();
