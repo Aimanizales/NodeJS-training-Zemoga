@@ -12,7 +12,7 @@ var height = process.argv[2],
       color: 'bgRed'
     },
     {
-      min: 16,
+      min: 16.01,
       max: 16.99,
       message: 'Infrapeso: Delgadez moderada',
       color: 'red'
@@ -55,20 +55,11 @@ var height = process.argv[2],
     }];
 
 function getIMCMessage(){
-  let message = chalk.red('IMC fuera del rango');
+  let message = chalk.red('IMC out or range');
   const range = imcRanges.find(element => imc >= element.min && imc <= element.max);
-
   if (range) {
     message = chalk.bold[range.color](range.message);
   }
-  /*imcRanges.forEach((item, index) => {
-    if(imc >= item.min && imc <= item.max){
-      message = chalk.bold[item.color](item.message);
-      return;
-    }else if(imc < 0 || imc > 100) {
-      message = chalk.red('IMC fuera del rango');
-    }
-  });*/
   return message;
 }
 
