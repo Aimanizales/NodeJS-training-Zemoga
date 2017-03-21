@@ -6,6 +6,15 @@
 - Incluye varias librerías Core ([Libuv](https://github.com/libuv/libuv) y [V8](https://github.com/v8/v8) entre las más importantes) que son las encargadas de convertir JS a código de máquina.
 - Usada también por Chrome (también desarrollado en C++) como librería 'engine' de JS.
 
+## 2. Ejecución de código en NodeJS 
+```bash
+//Sintaxis 1. Comando node y el nombre del archivo.js:
+node app.js
+
+//Sintaxis 2: REPL (Read Eval Print Loop):
+node 1+1
+```
+
 ## 2. El objeto [`process`](https://nodejs.org/api/process.html#process_process):
 - Es un **objeto global que se puede utilizar en cualquier parte del programa (no depende de ningún contexto)**.
 - **Provee información acerca del proceso actual y algunas características del sistema donde se está ejecutando** y también **puede almacenar información**.
@@ -60,8 +69,10 @@ console.log(sum(1,2));
 console.log(mathFunctions.sum(40, 3));
 ```
 
+## 4. Objects Globales y [`global`](https://nodejs.org/api/globals.html):
+Existen varios **objetos y funciones globales que están disponibles en toda la aplicación de Node JS sin necesidad de incluir ningún módulo**: `process`, `console`, `exports`, `module`, `require` y `global`, que se encuentra en el nivel superior del "scope" en la aplicación de Node JS -similar a `window` en el browser-.
 
 ## Pendiente:
 - 'Single thread': (se ejecuta línea por línea)
 - 'Event loop': (la solución al single thread)
-- Comandos **REPL (Read Eval Print Loop)**: `TAB, .break, .editor, .load [file-name], .save [file-name], .help`
+- Comandos `TAB, .break, .editor, .load [file-name], .save [file-name], .help`
