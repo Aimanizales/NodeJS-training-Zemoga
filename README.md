@@ -6,13 +6,22 @@
 - Incluye varias librerías Core ([Libuv](https://github.com/libuv/libuv) y [V8](https://github.com/v8/v8) entre las más importantes) que son las encargadas de convertir JS a código de máquina.
 - Usada también por Chrome (también desarrollado en C++) como librería 'engine' de JS.
 
-## 2. Ejecución de código en NodeJS 
-```bash
-//Sintaxis 1. Comando node y el nombre del archivo.js:
-node app.js
+## 2. Ejecutar código nodeJS 
+Siempre se inicia con el comando `node` con dos variaciones:
 
-//Sintaxis 2: REPL (Read Eval Print Loop):
-node 1+1
+2.1 Nombre del archivo como parámetro:
+`node app.js`
+
+2.2 Expresión directa **REPL (Read Eval Print Loop)**:
+`node 1+1`
+
+2.3 REPL multilínea:
+```bash
+node (ENTER)
+var a = 0; (ENTER)
+if (a === 0) { (ENTER)
+ console.log("a == 0"); (ENTER)
+} (ENTER)
 ```
 
 ## 2. El objeto [`process`](https://nodejs.org/api/process.html#process_process):
