@@ -16,7 +16,7 @@
     "jshint": "^2.9.4"
   },
   "scripts": {
-    "start": "node imc.js",
+    "start": "node app.js",
     "lint": "jshint **.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "e2": "node imc.js"
