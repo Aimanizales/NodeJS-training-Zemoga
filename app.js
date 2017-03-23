@@ -1,4 +1,4 @@
-const chalk = require('chalk'),
+var chalk = require('chalk'),
     moment = require('moment'),
     val = require('./utils/validate');
     imc = require('./utils/imc');
