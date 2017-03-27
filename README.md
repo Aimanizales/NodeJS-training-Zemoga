@@ -1,6 +1,11 @@
 # zTraining (NodeJS)
 [ZEM-NodeJS training](https://bitbucket.org/zemoga/zem-nodejs-training/wiki/Home) | [Github NodeJS](https://github.com/nodejs/node)
 
+## 0. JavaScript
+- **Es el lenguaje nativo de Node**.
+- Esto le permite implementar una arquitectura llamada _"aplicaciones universales"_ (re-usar la lógica de negocio del lado del servidor para que se ejecute de igual manera en el cliente) 
+- Esto da ventajas de SEO, performance y experiencia de usuario (Se debe analizar muy bien esta arquitectura antes de implementar).
+
 ## 1. NodeJS:
 - Escrito en C++, Soporta librerías escritas en éste y su incorporación se hace mediante 'bindings'.
 - Incluye varias librerías Core ([Libuv](https://github.com/libuv/libuv) y [V8](https://github.com/v8/v8) entre las más importantes) que son las encargadas de convertir JS a código de máquina (_engine_ o motor de interpretación).
@@ -98,6 +103,19 @@ Existen varios **objetos y funciones globales que están disponibles en toda la 
 - Cola de eventos (Queue) suscritos que NodeJS revisa constantemente para saber cuál de ellos terminó e invocar el código asociado a éste.
 
 
+## 8. Eventos concurrentes y non-blocking
+- La implementación de eventos asíncronos IO (input/output) permite manipular peticiones concurrentes (chats, aplicaciones basadas en microservicios, streaming de video, entre otros).
+- Varios procesos pueden ejecutarse en paralelo sin que exista la necesidad de que en cada transmisión el proceso termine para que el siguiente se ejecute (non blocking).
+- Esta arquitectura de eventos puede resultar natural para desarrolladores front-end que están acostumbrados a la naturaleza asíncrona de Javascript del lado de navegador (eventos de mouse, ajax, etc). 
+- Pero para back-ends de Java o .NET esto puede parecer no tan natural ya que la naturaleza de **JS expone funciones de _primer orden_ que pueden manipularse como variables** permitiendo que **funciones puedan ser pasadas como argumentos en otras funciones**. Esto se conoce en inglés como _first-class citizens functions_.
+- Ejemplo:
+```js
+const numbers = [2,4,1,5,4];
+function isBiggerThanTwo (num) {  
+  return num > 2;
+}
+numbers.filter(isBiggerThanTwo);
+```
 
 ## Pendiente:
 - Comandos `TAB, .break, .editor, .load [file-name], .save [file-name], .help`
