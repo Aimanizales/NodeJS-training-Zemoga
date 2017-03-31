@@ -165,20 +165,20 @@ inquirer.prompt([
         Height: ${chalk.grey(height + 'm')}
         Weight:${chalk.grey(weight + 'Kg')}
         IMC:${chalk.grey.bold(imcValue)}
-        Clasification:${imc.getMessage()}`,
-      messageFile = 
-        'Date: ' + chalk.grey(moment()) +
+        Clasification:${imc.getMessage()}
+          `,
+      //For .txt file, use '+' instead '${}'
+      messageFile = '\nDate: ' + chalk.grey(moment()) +
         '\nIMC: ' + imcValue + 
         '\nClasification:' + clasification;
   console.log("calculando...");
 
   interval = setInterval(function(){
     console.log(message);
-    console.log(messageFile);
-    wstream.write('holalalala\n');
+    console.log('Text to be printed in the .txt file:\n', messageFile);
     wstream.write(messageFile);
     wstream.end();
-    console.log('imc-results.txt generated');
+    //console.log('imc-results.txt generated');
     clearInterval(interval);
   }, 1000);
   
