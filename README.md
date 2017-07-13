@@ -6,6 +6,23 @@
 - Esto le permite implementar una arquitectura llamada _"aplicaciones universales"_ (re-usar la lógica de negocio del lado del servidor para que se ejecute de igual manera en el cliente) 
 - Esto da ventajas de SEO, performance y experiencia de usuario (Se debe analizar muy bien esta arquitectura antes de implementar).
 
+### Estandarización EcmaScript (ES):
+
+| Name | Date Release | Features |
+|-:|-|-|
+| ES4 | Never released | 
+| ES5 | Dic-2009 | 'strict mode', JSON support
+| ES5.1 | Jun-2011 | Editorial changes
+| ES2015 (ES6) | Jun-2015 | Classes and Modules
+| ES2016 (ES7) | 2016 | exponential operator (**), Array.prototypes.includes
+
+Leer: 
+- [https://en.wikipedia.org/wiki/ECMAScript](https://en.wikipedia.org/wiki/ECMAScript)
+- [https://en.wikipedia.org/wiki/Comparison_of_layout_engines_(ECMAScript)](https://en.wikipedia.org/wiki/Comparison_of_layout_engines_(ECMAScript))
+- [https://nodejs.org/en/docs/es6/](https://nodejs.org/en/docs/es6/)
+
+#### Babel:  Permite convertir el código de una versión nueva a versiones anteriores que soporte NodeJS o el navegador (transpilación). Este proceso sucede justo antes de correr la aplicación (Building).
+
 ## 1. NodeJS:
 - Escrito en C++, Soporta librerías escritas en éste y su incorporación se hace mediante 'bindings'.
 - Incluye varias librerías Core ([Libuv](https://github.com/libuv/libuv) y [V8](https://github.com/v8/v8) entre las más importantes) que son las encargadas de convertir JS a código de máquina (_engine_ o motor de interpretación).
@@ -101,6 +118,7 @@ Existen varios **objetos y funciones globales que están disponibles en toda la 
 ## 7. Event Loop
 - Permite a NodeJS realizar operaciones asíncronas (non-blocking) a pesar ser _single thread_, delegando operaciones al kernel del sistema -siempre que sea posible-.
 - Cola de eventos (Queue) suscritos que NodeJS revisa constantemente para saber cuál de ellos terminó e invocar el código asociado a éste.
+- [Understanding the Node.js Event Loop](https://blog.risingstack.com/node-js-at-scale-understanding-node-js-event-loop/)
 
 
 ## 8. Eventos concurrentes y non-blocking
