@@ -1,4 +1,4 @@
 
-Date: [90mFri Mar 31 2017 15:13:08 GMT-0500[39m
-IMC: 2.1875
-Clasification:[1m[41mInfrapeso: Delgadez severa[49m[22m
+Date: [90mFri Mar 31 2017 16:20:31 GMT-0500[39m
+IMC: 25.95155709342561
+Clasification:[1m[33mSobrepeso[39m[22m
