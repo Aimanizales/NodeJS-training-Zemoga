@@ -1,7 +1,7 @@
 'use strict';
 
-// sjfas jdklfsdfs pepe
-var chalk = require('chalk'),
+// Exercise with BabelJS
+let chalk = require('chalk'),
     moment = require('moment'),
     val = require('../utils/validate');
 imc = require('../utils/imc');
