@@ -1,11 +1,9 @@
 {
+  "author": "Aiman Abdel-Samad",
   "name": "zemoga-training-nodejs",
-  "version": "1.0.0",
+  "version": "0.0.2",
   "description": "Training based on gmoralesc github course",
-  "main": "app.js",
-  "bin": {
-    "imc": "imc.js"
-  },
+  "license": "ISC",
   "dependencies": {
     "chalk": "^1.1.3",
     "colors": "^1.1.2",
@@ -18,17 +16,18 @@
     "babel-preset-env": "^1.6.0",
     "jshint": "^2.9.4"
   },
+  "main": "app/index.js",
   "scripts": {
-    "start": "node app.js",
-    "lint": "jshint **.js",
+    "lint": "jshint app/**/*.js",
+    "start": "node app/exercise1/e1-clock.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "imc1": "node imc.js",
-    "imc3": "node app3.js",
-    "exercise5": "node app/exercise5/index.js",
-    "build": "babel -w app.js -o app-babel.js && node app-babel.js -s"
+    "exercise1": "node app/exercise1/e1-clock.js",
+    "exercise2": "node app/exercise2",
+    "exercise3": "node app/exercise3/app3.js",
+    "exercise4": "npm run build",
+    "build": "babel -w app/exercise4/index.js -o app/exercise4/index-babel.js && node app/exercise4/index-babel.js -s"
   },
-  "author": "Aiman Abdel-Samad",
-  "license": "ISC",
+ 
   "repository": {
     "type": "git",
     "url": "https://github.com/Aimanizales/nodejs-z-training.git"

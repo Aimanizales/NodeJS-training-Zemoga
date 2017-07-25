@@ -1,9 +1,10 @@
 'use strict';
 
+// sjfas jdklfsdfs pepe
 var chalk = require('chalk'),
     moment = require('moment'),
-    val = require('./utils/validate');
-imc = require('./utils/imc');
+    val = require('../utils/validate');
+imc = require('../utils/imc');
 
 const height = process.argv[2],
       weight = process.argv[3];

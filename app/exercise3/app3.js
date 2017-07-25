@@ -1,8 +1,8 @@
 var chalk = require('chalk'),
     moment = require('moment'),
-    validate = require('./utils/validate'),
-    imc = require('./utils/imc'),
     inquirer = require('inquirer'),
+    validate = require('../utils/validate'),
+    imc = require('../utils/imc'),
     fs = require('fs');
     wstream = fs.createWriteStream('imc-results.txt');
 

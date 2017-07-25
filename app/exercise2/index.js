@@ -1,7 +1,14 @@
-var chalk = require('chalk'),
+/**
+ * Exercise 2
+ * 
+ */
+
+//npm run exercise2 [height in meters] [weight in kilograms]
+
+let chalk = require('chalk'),
     moment = require('moment'),
-    val = require('./utils/validate');
-    imc = require('./utils/imc');
+    val = require('../utils/validate'); // "./" avoids node_modules folder
+    imc = require('../utils/imc');
 
 const height = process.argv[2],
     weight = process.argv[3];
@@ -18,7 +25,6 @@ function init(){
       IMC:${chalk.grey.bold(imc.getIMC(height, weight))}
       ${imc.getMessage()}`;
   }
-  //console.log(val.isNumber(height), val.isNumber(weight));
   console.log(message);
 }
 
