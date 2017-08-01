@@ -168,14 +168,17 @@ inquirer.prompt([
         Clasification:${imc.getMessage()}
           `,
       //For .txt file, use '+' instead '${}'
-      messageFile = '\nDate: ' + chalk.grey(moment()) +
+      messageFile = '\nDate: ' + moment() +
         '\nIMC: ' + imcValue + 
         '\nClasification:' + clasification;
+  
   console.log("calculando...");
 
   interval = setInterval(function(){
     console.log(message);
+
     console.log('Text to be printed in the .txt file:\n', messageFile);
+    
     wstream.write(messageFile);
     wstream.end();
     //console.log('imc-results.txt generated');

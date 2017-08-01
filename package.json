@@ -24,7 +24,8 @@
     "exercise1": "node app/exercise1/e1-clock.js",
     "exercise2": "node app/exercise2",
     "exercise3": "node app/exercise3/app3.js",
-    "exercise4": "npm run build",
+    "exercise4": "node app/exercise4",
+    "exercise5": "npm run build",
     "build": "babel -w app/exercise4/index.js -o app/exercise4/index-babel.js && node app/exercise4/index-babel.js -s"
   },
  
