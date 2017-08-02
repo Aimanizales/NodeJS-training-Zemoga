@@ -1,28 +1,62 @@
 'use strict';
 
-// Exercise with BabelJS
-let chalk = require('chalk'),
+var chalk = require('chalk'),
     moment = require('moment'),
-    val = require('../utils/validate');
-imc = require('../utils/imc');
+    inquirer = require('inquirer'),
+    validate = require('../utils/validate'),
+    imc = require('../utils/imc'),
+    fs = require('fs');
 
-const height = process.argv[2],
-      weight = process.argv[3];
-
-function init() {
-    let message = chalk.red('Revisa los datos');
-
-    if (val.isNumber(height) && val.isNumber(weight)) {
-        message = `
-      Date: ${chalk.grey(moment())}
-      Username: ${chalk.grey(process.env.USER)}
-      Height: ${chalk.grey(height + 'm')}
-      Weight:${chalk.grey(weight + 'Kg')}
-      IMC:${chalk.grey.bold(imc.getIMC(height, weight))}
-      ${imc.getMessage()}`;
+inquirer.prompt([{
+  type: 'input',
+  name: 'weight',
+  message: 'Please, write your weight (in Kilograms)',
+  validate: function (value) {
+    var pass = value.match(/(\d+)(\.\d+)?/g);
+    if (pass) {
+      return true;
     }
-    //console.log(val.isNumber(height), val.isNumber(weight));
-    console.log(message);
-}
+    return 'Please enter a valid weight (in Kilograms)';
+  }
+}, {
+  type: 'input',
+  name: 'height',
+  message: 'Please, enter your height (in meters)',
+  validate: function (value) {
+    var pass = value.match(/(\d+)(\.\d+)?/g);
+    if (pass) {
+      return true;
+    }
+    return 'Please enter a valid height (in meters)';
+  }
+}]).then(function (answers) {
+  let interval,
+      height = answers.height,
+      weight = answers.weight,
+      imcValue = imc.getIMC(height, weight),
+      dateNow = moment().format('MMMM Do YYYY, h:mm:ss a'),
+      message = `
+        Date: ${chalk.grey(dateNow)}
+        Username: ${chalk.grey(process.env.USER)}
+        Height: ${chalk.grey(height + 'm')}
+        Weight:${chalk.grey(weight + 'Kg')}
+        IMC:${chalk.grey.bold(imcValue)}
+        Clasification:${imc.getMessageText(true)}`;
 
-init();
+  console.log("calculando...");
+
+  interval = setInterval(function () {
+    console.log(message);
+    writeFile(dateNow, imcValue, imc.getMessageText());
+    clearInterval(interval);
+  }, 1000);
+});
+
+function writeFile(date, imc, classification) {
+  let txt = date + '| IMC: ' + imc + ' : ' + classification + '\n',
+      wstream = fs.createWriteStream('app/exercise3/results.txt', { flags: 'a' });
+
+  console.log('Writing .txt file:\n', txt);
+  wstream.write(txt);
+  wstream.end();
+}

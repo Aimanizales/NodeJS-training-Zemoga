@@ -21,7 +21,7 @@ inquirer.prompt([
   ,{
     type: 'input',
     name: 'height',
-    message: 'Please, enter your height (in meters)',
+    message: 'Please, write your height (in meters)',
     validate: function (value) {
       var pass = value.match(/(\d+)(\.\d+)?/g);
       if (pass) {

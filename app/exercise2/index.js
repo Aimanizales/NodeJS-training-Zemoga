@@ -23,7 +23,7 @@ function init(){
       Height: ${chalk.grey(height + 'm')}
       Weight:${chalk.grey(weight + 'Kg')}
       IMC:${chalk.grey.bold(imc.getIMC(height, weight))}
-      ${imc.getMessage()}`;
+      ${imc.getMessageText(true)}`;
   }
   console.log(message);
 }
