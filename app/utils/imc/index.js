@@ -49,19 +49,24 @@ const chalk = require('chalk'),
     color: 'bgRed'
   }];
 
-let IMC = 0;
+let IMC = 0,
+    message = 'IMC está fuera del rango permitido',
+    color;
 
 module.exports = {
   getIMC: function(h, w){
     IMC = w / Math.pow(h, 2);
-    return IMC;
+    return IMC.toFixed(2);
   },
-  getMessage: function(){
-    message = chalk.red('IMC está fuera del rango permitido');
-    const range = imcRanges.find(element => IMC >= element.min && IMC <= element.max);
+  getMessageText: function(withColor){
+    let range = imcRanges.find(element => IMC >= element.min && IMC <= element.max);
     
     if (range) {
-      message = chalk.bold[range.color](range.message);
+      message = range.message;
+
+      if(withColor){
+        message = chalk[range.color](message);
+      }
     }
     return message;
   }
